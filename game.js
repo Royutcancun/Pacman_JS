@@ -16,11 +16,11 @@ let wallInnerColor = "black";
 let foodColor = "#FEB897";
 let score = 0;
 
+
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
-
 
 let map = [
     [1, 1,1,1,1 ,1, 1,1,1,1 ,1, 1,1,1,1 ,1, 1,1,1,1, 1],
@@ -71,13 +71,25 @@ let drawFoods = () => {
             }
         }
     }
-}
+};
+
+let drawScore = () => {
+    canvasContext.font = "bold 20px Emulogic";
+    canvasContext.fillStyle = "white";
+    canvasContext.fillText(
+        "SCORE:  " + score,
+        10,
+        oneBlockSize * (map.length + 1) + 10
+    );
+};
+
 
 let draw = () => {
     createRect(0, 0, canvas.width, canvas.height, "black");
     drawWalls();
     drawFoods();
     pacman.draw();
+    drawScore();
 };
 
 let gameInterval = setInterval(gameLoop, 1000 / fps);
