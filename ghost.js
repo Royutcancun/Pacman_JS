@@ -17,11 +17,11 @@ class Ghost {
         );
         setInterval(()=>{
             this.changeRandomDirection()
-        }, 10000)
+        }, 5000)
     }
 
     changeRandomDirection() {
-        this.randomTargetIndex += 1;
+        this.randomTargetIndex += parseInt(Math.random() * 4);
         this.randomTargetIndex = this.randomTargetIndex % 4;
     }
 
@@ -44,13 +44,13 @@ class Ghost {
                 this.x -= this.speed
                 break
             case DIRECTION_UP:
-                this.y += this.speed
+                this.y += this.speed 
                 break
             case DIRECTION_LEFT:
-                this.x += this.speed
+                this.x += this.speed 
                 break
             case DIRECTION_BOTTOM:
-                this.y -= this.speed
+                this.y -= this.speed 
                 break
         }
     }
@@ -216,6 +216,17 @@ class Ghost {
         );
 
         canvasContext.restore();
+
+        canvasContext.beginPath();
+        canvasContext.strokeStyle = "red";
+        canvasContext.arc(
+            this.x + oneBlockSize / 2,
+            this.y + oneBlockSize / 2,
+            this.range * oneBlockSize,
+            0,
+            2 * Math.PI
+        );
+        //canvasContext.stroke();
     }
 
     getMapX(){
